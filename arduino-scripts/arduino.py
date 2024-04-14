@@ -31,9 +31,9 @@ while True:
     msgRD = arduino.readline().decode('utf-8').strip()  # Read and decode the message, strip whitespace
     
     if msgRD == 'b':
-        take_pic()  # Take a picture if the message is 'b'
-        letter = give_output("captured_image.jpg")
-        arduino.write(bytes(letter, 'utf-8'))
+        #take_pic()  # Take a picture if the message is 'b'
+        #letter = give_output("captured_image.jpg")
+        arduino.write(bytes('p', 'utf-8'))
         
     
     if msgRD:  # Print the received message if it's not empty

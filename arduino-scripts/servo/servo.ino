@@ -23,13 +23,13 @@ void turn() {
   */
   myservo.write(0);
   delay(1000);
-  myservo.write(90);
+  myservo.write(180);
   delay(1000);
 }
 
 void setup() {
   myservo.attach(servoPin);
-  myservo.write(90);
+  myservo.write(180);
   Serial.begin(9600);
   pinMode(buttonPin, INPUT);
   Serial.setTimeout(1);
@@ -49,7 +49,6 @@ void loop() {
   
   if (Serial.available()) {
     message = Serial.readString();
-    Serial.print("yahl");
     if (message == "p") {
       analogWrite(in1pin, 255);
       delay(333);
