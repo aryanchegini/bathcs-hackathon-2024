@@ -2,9 +2,10 @@ import serial
 import cv2
 from time import sleep
 arduino = serial.Serial('/dev/cu.usbmodem1301', 9600, timeout=0.1)
-cap = cv2.VideoCapture(0)
+
 print("connected to: " + arduino.portstr)
 def take_pic():
+    cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Cannot open camera")
         exit()
@@ -31,9 +32,12 @@ while True:
     
     if msgRD == 'b':
         take_pic()  # Take a picture if the message is 'b'
+        letter = give_output("captured_image.jpg")
+        arduino.write(bytes(letter, 'utf-8'))
+        
     
     if msgRD:  # Print the received message if it's not empty
-        print(f"Message received from the Arduino: {msgRD}\n")
+        print(f"Picture taken ")
     #sleep(3)
 
 

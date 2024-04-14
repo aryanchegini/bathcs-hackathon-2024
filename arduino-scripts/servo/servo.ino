@@ -37,15 +37,19 @@ void setup() {
   pinMode(in2pin, OUTPUT);
   analogWrite(in1pin, LOW);
   analogWrite(in2pin, LOW);
-  Serial.print("yah");
 }
 
 void loop() {
   String message;
   buttonState = digitalRead(buttonPin);
+  if (buttonState == HIGH) {
+      delay(200);
+      Serial.print("b");
+    }
+  
   if (Serial.available()) {
     message = Serial.readString();
-
+    Serial.print("yahl");
     if (message == "p") {
       analogWrite(in1pin, 255);
       delay(333);
@@ -56,7 +60,7 @@ void loop() {
       analogWrite(in2pin, LOW);
     }
 
-    if (message == "l") {
+    if (message == "g") {
       analogWrite(in2pin, 255);
       delay(333);
       analogWrite(in2pin, LOW);
@@ -69,12 +73,6 @@ void loop() {
     if (message == "c") {
       turn();
     }
-
-    if (buttonState == HIGH) {
-      delay(15);
-      Serial.print("b");
-    }
   
-    Serial.print(message);
   }
 }
