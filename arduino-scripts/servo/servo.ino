@@ -23,13 +23,13 @@ void turn() {
   */
   myservo.write(0);
   delay(1000);
-  myservo.write(180);
+  myservo.write(90);
   delay(1000);
 }
 
 void setup() {
   myservo.attach(servoPin);
-  myservo.write(180);
+  myservo.write(90);
   Serial.begin(9600);
   pinMode(buttonPin, INPUT);
   Serial.setTimeout(1);
@@ -50,8 +50,8 @@ void loop() {
   if (Serial.available()) {
     message = Serial.readString();
     if (message == "p") {
-      analogWrite(in1pin, 255);
-      delay(333);
+      analogWrite(in1pin, 200);
+      delay(500);
       analogWrite(in1pin, LOW);
       turn();
       analogWrite(in2pin, 255);
@@ -60,8 +60,8 @@ void loop() {
     }
 
     if (message == "g") {
-      analogWrite(in2pin, 255);
-      delay(333);
+      analogWrite(in2pin, 200);
+      delay(500);
       analogWrite(in2pin, LOW);
       turn();
       analogWrite(in1pin, 255);
